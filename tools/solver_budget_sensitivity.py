@@ -1,4 +1,4 @@
-"""How much of the L4.3 comparison is the partition, and how much is the solver?
+"""How much of the zoning comparison in notebook 06 is the partition, and how much is the solver?
 
 Every routed workload reported in notebook 06 comes from OR-Tools with a 2-second
 budget per zone. OR-Tools is an *anytime* heuristic, so those workloads are upper

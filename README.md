@@ -133,7 +133,7 @@ green zone is split into two lobes.*
 - **One demand day, not a distribution.** The table compares partitions on a *single*
   realisation. The whole point of fixed zones is that demand is random *every day*, so the
   relevant metrics are expected makespan, per-zone variance and probability of overflowing a
-  shift. That is the next milestone (L4.4) and it is not done yet.
+  shift. That is the next milestone.
 - **Against count-balancing the win is unambiguous** — the busiest courier drops from
   31.3 km to 28.4 km (30 s budget) — but **against k-means it is not a win on the busiest courier.** At
   every routing budget tested, k-means' busiest zone is slightly *shorter* than BHH's
@@ -146,7 +146,7 @@ green zone is split into two lobes.*
 - **Routed workloads come from a heuristic TSP** (OR-Tools on a time budget), so they are
   upper bounds on the optimum, not exact tour lengths — which is why result (4) exists.
 - **Contiguity is not enforced** (see the figure caption).
-- **Elevation and load-dependent cost are not modelled yet** (planned as L6).
+- **Elevation and load-dependent cost are not modelled yet** (planned).
 
 ---
 
@@ -168,7 +168,7 @@ in the repo without the cell that produced it.
 ## Repository map
 
 ```
-notebooks/01_real_map_brussels.ipynb     real bike network + one shortest path
+notebooks/01_shortest_path_ixelles.ipynb real bike network + one shortest path
 notebooks/02_single_courier_tsp.ipynb    point-to-network snapping, distance matrix, TSP
 notebooks/03_multi_courier_vrp.ipynb     VRP, makespan objective, fleet sizing
 notebooks/04_districting.ipynb           k-means zoning baseline, and why it fails
@@ -211,21 +211,21 @@ for real at the end to check the estimate did its job.
 
 ## Roadmap
 
-| | | status |
+| stage | notebook | status |
 |---|---|---|
-| L1 | Shortest path on the real network (Dijkstra) | done |
-| L2 | One courier, N stops (TSP); exact vs heuristics | done |
-| L3 | k couriers (VRP); makespan vs min-sum; fleet sizing | done |
-| L4.1–4.3 | Districting: k-means baseline → count-balance → BHH workload balance | done |
-| **L4.4** | **Robust zones: fixed zones vs M simulated demand days; E[max], CV, P(overflow); contiguity enforced** | **next** |
-| L5 | Second micro-hub: p-median, improvement heatmap, break-even cost | planned |
-| L6 | Slope + load-dependent edge cost (breaks the fixed-matrix TSP) | planned |
-| L7 | Sensitivity of the conclusions to the arbitrary parameters | planned |
-| Product | Interactive dashboard (Streamlit / folium): couriers, hubs, scenario → routes + metrics | planned |
+| Shortest paths on the real bike network | 01 | done |
+| One courier, N stops (TSP): exact vs heuristics | 02 | done |
+| Several couriers (VRP): makespan vs total distance, fleet sizing | 03 | done |
+| Zoning: k-means → equal stop counts → balanced routed workload | 04–06 | done |
+| **Robust zones**: fixed zones over many simulated demand days; contiguity enforced | — | **next** |
+| Second micro-hub: where it pays off (p-median, break-even cost) | — | planned |
+| Slope and load-dependent riding cost | — | planned |
+| Sensitivity of the conclusions to the model parameters | — | planned |
+| Interactive dashboard (Streamlit / folium) | — | planned |
 
 ### Next steps
 
-**L4.4 — robust zones.** Zones are fixed, but demand is random every day, so the right target
+**Robust zones.** Zones are fixed, but demand is random every day, so the right target
 is balance *in expectation with low variance*, not balance on one instance:
 
 1. Simulate M demand days from the same spatial process, keeping the zones fixed.

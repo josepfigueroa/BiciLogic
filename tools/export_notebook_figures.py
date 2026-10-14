@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 # (notebook, index of the image among that notebook's outputs, exported name)
 FIGURES = [
-    ("01_real_map_brussels",      0, "fig_01_shortest_path.png"),
+    ("01_shortest_path_ixelles",  0, "fig_01_shortest_path.png"),
     ("02_single_courier_tsp",     0, "fig_02_stops.png"),
     ("02_single_courier_tsp",     1, "fig_02_annealing_convergence.png"),
     ("03_multi_courier_vrp",      0, "fig_03_vrp_3couriers.png"),
