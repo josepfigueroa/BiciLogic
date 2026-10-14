@@ -1,22 +1,20 @@
 # BiciLogic
 
-**How should a cargo-bike delivery operator in Brussels cut the city into stable courier
-zones — and when does a second micro-hub pay for itself?**
+**How should a cargo-bike delivery operator in Brussels divide the city into stable courier
+zones with a fair workload?**
 
-A simulation and optimization study on the real Brussels street network: shortest paths,
-TSP/VRP routing, workload-balanced districting, and (next) facility location. The discipline
-is operations research and geospatial analysis, not machine learning.
+An operations-research and geospatial study on the real Brussels street network: shortest
+paths, TSP/VRP routing and workload-balanced districting. Facility location (where a second
+micro-hub pays off) is the next stage.
 
-> ### Data boundary — read this first
-> The **street network is real** (OpenStreetMap via OSMnx: one-ways, cycleways, real link
-> lengths). **Demand is simulated** — a spatial point process of hotspots plus uniform
-> background. No delivery operator has supplied real orders, and none of the results below
-> is a measurement of a live operation. They are statements about a modelled demand process
-> on a real network. Anchoring the demand model to open Brussels data (population, POIs) is
-> the next data step; it will still be *simulated demand on real anchors*.
+> **Data.** The street network is real (OpenStreetMap via OSMnx: one-ways, cycleways, real
+> link lengths). Demand is simulated: a spatial point process of hotspots plus uniform
+> background. The results describe a modelled demand process on a real network, not a live
+> operation.
 
-Every number on this page is printed by a committed notebook that is stored **with its
-outputs**, so it can be checked without re-running anything.
+Every number on this page is printed by a committed notebook stored **with its outputs**, or
+written to [`outputs/solver_budget_sensitivity.json`](outputs/solver_budget_sensitivity.json),
+so it can be checked without re-running anything.
 
 ---
 
@@ -68,9 +66,9 @@ network over random point sets of size 10/20/40/60:
 **β_net = 1.347, R² = 0.912** — against the standard Euclidean-uniform estimate **0.7124**.
 
 So the functional form `√(nA)` transfers well (R² = 0.912), while the constant is **1.9×**
-larger: that factor absorbs the detour imposed by streets, one-ways and barriers. Riding a
-network costs roughly twice the idealised Euclidean law — a reusable planning number, not
-just an internal parameter.
+larger. Part of that factor is the detour imposed by streets, one-ways and barriers; part
+comes from small samples and from measuring *A* as the convex hull of each sample, which
+shrinks the area. A Euclidean fit on the same point sets would separate the two (planned).
 
 ### 3. Fleet sizing: diminishing returns are sharp and measurable
 
@@ -114,38 +112,35 @@ solver randomness.*
   as the solver improves. The ordering holds; the magnitude quoted from a single 2-second run
   overstates it.
 
-This is reported rather than quietly dropped, because it is also the argument for the next
-milestone: if two partitions are within a single day's noise, the question that separates them
-is what happens across *many* days.
+If two partitions are this close on a single day, what separates them is how they behave
+across *many* simulated days, which is the next milestone.
 
 ---
 
 ![Routed zones, workload-balanced](outputs/fig_06_bhh_zone_routes.png)
 
 *One courier per colour, routed from the shared depot (★) through its own zone. This is the
-BHH-balanced partition from the table above — and it also shows the method's current
-weakness: **zone contiguity is not enforced**, so the green zone is split into a northern and
-a southern lobe. A courier's territory must be one connected area; fixing this is the next
-piece of work, not a detail to hide.*
+BHH-balanced partition from the table above. Zone contiguity is not enforced yet, so the
+green zone is split into two lobes.*
 
 ---
 
-## What is honest to claim, and what is not
+## Limitations
 
-- **Demand is synthetic.** See the data boundary above. The *reversal* in result (1) is a
+- **Demand is synthetic.** The *reversal* in result (1) is a
   structural fact about area and depot distance, not an artefact of the hotspot model — but
   the specific ratios (1.22 / 1.86 / 1.11) belong to this simulated instance.
 - **One demand day, not a distribution.** The table compares partitions on a *single*
   realisation. The whole point of fixed zones is that demand is random *every day*, so the
-  honest metrics are expected makespan, per-zone variance and probability of overflowing a
+  relevant metrics are expected makespan, per-zone variance and probability of overflowing a
   shift. That is the next milestone (L4.4) and it is not done yet.
 - **Against count-balancing the win is unambiguous** — the busiest courier drops from
-  31.3 km to 28.4 km — but **against k-means it is not a win on the busiest courier.** At
+  31.3 km to 28.4 km (30 s budget) — but **against k-means it is not a win on the busiest courier.** At
   every routing budget tested, k-means' busiest zone is slightly *shorter* than BHH's
   (27.8 km vs 28.4 km at 30 s). What BHH improves is evenness: it raises the lightest zone
   (23.3 → 24.5 km) more than it raises the heaviest (27.8 → 28.4 km). In other words it
   balances by **lifting the floor, not lowering the ceiling**.
-- **Balance costs total distance.** 108.3 km for BHH against 100.5 km for k-means (+ 7.8 %).
+- **Balance costs total distance.** At 30 s, 108.3 km for BHH against 100.5 km for k-means (+7.7 %).
   The same min-sum vs makespan trade-off as in result (3), one level up: fairness across
   riders is bought with kilometres.
 - **Routed workloads come from a heuristic TSP** (OR-Tools on a time budget), so they are
