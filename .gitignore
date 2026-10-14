@@ -1,0 +1,24 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Environments
+.venv/
+env/
+venv/
+
+# OSMnx downloads data into this cache: useful locally, not committed
+notebooks/cache/
+cache/
+
+# Large (downloaded/derived) data. Commit only small samples if needed.
+data/*
+!data/.gitkeep
+
+# Editors
+.vscode/
+.idea/

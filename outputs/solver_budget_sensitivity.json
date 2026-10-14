@@ -1,0 +1,281 @@
+{
+  "beta_net": 1.347,
+  "budgets_s": [
+    2,
+    10,
+    30
+  ],
+  "repeats": 2,
+  "results": [
+    {
+      "budget_s": 2,
+      "repeat": 0,
+      "partition": "k-means",
+      "zone_km": [
+        23.714,
+        25.816,
+        28.531,
+        23.313
+      ],
+      "busiest_km": 28.531,
+      "lightest_km": 23.313,
+      "total_km": 101.374,
+      "imbalance": 1.2238
+    },
+    {
+      "budget_s": 2,
+      "repeat": 0,
+      "partition": "count-balanced",
+      "zone_km": [
+        25.474,
+        31.256,
+        16.83,
+        30.449
+      ],
+      "busiest_km": 31.256,
+      "lightest_km": 16.83,
+      "total_km": 104.009,
+      "imbalance": 1.8572
+    },
+    {
+      "budget_s": 2,
+      "repeat": 0,
+      "partition": "BHH",
+      "zone_km": [
+        28.661,
+        28.343,
+        25.815,
+        27.461
+      ],
+      "busiest_km": 28.661,
+      "lightest_km": 25.815,
+      "total_km": 110.28,
+      "imbalance": 1.1102
+    },
+    {
+      "budget_s": 2,
+      "repeat": 1,
+      "partition": "k-means",
+      "zone_km": [
+        23.714,
+        25.816,
+        28.531,
+        23.313
+      ],
+      "busiest_km": 28.531,
+      "lightest_km": 23.313,
+      "total_km": 101.374,
+      "imbalance": 1.2238
+    },
+    {
+      "budget_s": 2,
+      "repeat": 1,
+      "partition": "count-balanced",
+      "zone_km": [
+        25.474,
+        31.256,
+        16.83,
+        30.449
+      ],
+      "busiest_km": 31.256,
+      "lightest_km": 16.83,
+      "total_km": 104.009,
+      "imbalance": 1.8572
+    },
+    {
+      "budget_s": 2,
+      "repeat": 1,
+      "partition": "BHH",
+      "zone_km": [
+        28.661,
+        28.343,
+        25.815,
+        27.461
+      ],
+      "busiest_km": 28.661,
+      "lightest_km": 25.815,
+      "total_km": 110.28,
+      "imbalance": 1.1102
+    },
+    {
+      "budget_s": 10,
+      "repeat": 0,
+      "partition": "k-means",
+      "zone_km": [
+        23.655,
+        25.816,
+        28.154,
+        23.313
+      ],
+      "busiest_km": 28.154,
+      "lightest_km": 23.313,
+      "total_km": 100.938,
+      "imbalance": 1.2077
+    },
+    {
+      "budget_s": 10,
+      "repeat": 0,
+      "partition": "count-balanced",
+      "zone_km": [
+        25.327,
+        31.256,
+        16.83,
+        30.449
+      ],
+      "busiest_km": 31.256,
+      "lightest_km": 16.83,
+      "total_km": 103.862,
+      "imbalance": 1.8572
+    },
+    {
+      "budget_s": 10,
+      "repeat": 0,
+      "partition": "BHH",
+      "zone_km": [
+        28.429,
+        28.343,
+        24.586,
+        27.032
+      ],
+      "busiest_km": 28.429,
+      "lightest_km": 24.586,
+      "total_km": 108.39,
+      "imbalance": 1.1563
+    },
+    {
+      "budget_s": 10,
+      "repeat": 1,
+      "partition": "k-means",
+      "zone_km": [
+        23.655,
+        25.816,
+        28.154,
+        23.313
+      ],
+      "busiest_km": 28.154,
+      "lightest_km": 23.313,
+      "total_km": 100.938,
+      "imbalance": 1.2077
+    },
+    {
+      "budget_s": 10,
+      "repeat": 1,
+      "partition": "count-balanced",
+      "zone_km": [
+        25.369,
+        31.256,
+        16.83,
+        30.449
+      ],
+      "busiest_km": 31.256,
+      "lightest_km": 16.83,
+      "total_km": 103.904,
+      "imbalance": 1.8572
+    },
+    {
+      "budget_s": 10,
+      "repeat": 1,
+      "partition": "BHH",
+      "zone_km": [
+        28.429,
+        28.343,
+        24.586,
+        27.032
+      ],
+      "busiest_km": 28.429,
+      "lightest_km": 24.586,
+      "total_km": 108.39,
+      "imbalance": 1.1563
+    },
+    {
+      "budget_s": 30,
+      "repeat": 0,
+      "partition": "k-means",
+      "zone_km": [
+        23.529,
+        25.816,
+        27.834,
+        23.313
+      ],
+      "busiest_km": 27.834,
+      "lightest_km": 23.313,
+      "total_km": 100.492,
+      "imbalance": 1.1939
+    },
+    {
+      "budget_s": 30,
+      "repeat": 0,
+      "partition": "count-balanced",
+      "zone_km": [
+        25.204,
+        31.256,
+        16.83,
+        29.991
+      ],
+      "busiest_km": 31.256,
+      "lightest_km": 16.83,
+      "total_km": 103.281,
+      "imbalance": 1.8572
+    },
+    {
+      "budget_s": 30,
+      "repeat": 0,
+      "partition": "BHH",
+      "zone_km": [
+        28.429,
+        28.343,
+        24.46,
+        27.032
+      ],
+      "busiest_km": 28.429,
+      "lightest_km": 24.46,
+      "total_km": 108.264,
+      "imbalance": 1.1623
+    },
+    {
+      "budget_s": 30,
+      "repeat": 1,
+      "partition": "k-means",
+      "zone_km": [
+        23.529,
+        25.816,
+        27.834,
+        23.313
+      ],
+      "busiest_km": 27.834,
+      "lightest_km": 23.313,
+      "total_km": 100.492,
+      "imbalance": 1.1939
+    },
+    {
+      "budget_s": 30,
+      "repeat": 1,
+      "partition": "count-balanced",
+      "zone_km": [
+        25.204,
+        31.256,
+        16.83,
+        29.991
+      ],
+      "busiest_km": 31.256,
+      "lightest_km": 16.83,
+      "total_km": 103.281,
+      "imbalance": 1.8572
+    },
+    {
+      "budget_s": 30,
+      "repeat": 1,
+      "partition": "BHH",
+      "zone_km": [
+        28.429,
+        28.343,
+        24.46,
+        27.032
+      ],
+      "busiest_km": 28.429,
+      "lightest_km": 24.46,
+      "total_km": 108.264,
+      "imbalance": 1.1623
+    }
+  ]
+}

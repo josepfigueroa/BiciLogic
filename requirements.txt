@@ -1,0 +1,23 @@
+# Verified against the environment used to execute notebooks 01-06
+# (conda env `main`, Python 3.12). Lower bounds, not pins.
+
+# Geospatial + graph core
+osmnx>=2.1
+networkx>=3.0
+geopandas>=1.0
+shapely>=2.0
+
+# Data + compute
+numpy>=1.26
+pandas>=2.0
+scipy>=1.11
+
+# Optimization
+ortools>=9.10          # VRP / TSP solver (src/vrp.py)
+scikit-learn>=1.4      # k-means districting baseline (notebooks 04-06)
+
+# Visualization
+matplotlib>=3.8
+
+# Notebooks
+jupyterlab>=4.0
